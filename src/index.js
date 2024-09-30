@@ -5,15 +5,31 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { IntlProvider } from "react-intl";
+import localeEs from "./locale/es";
+import localeEn from "./locale/en";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import { createRoot } from 'react-dom/client';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function Root() {
+
+  let lang = navigator.language.split("-")[0];
+  const locals = {
+    "es": localeEs,
+    "en": localeEn
+  }
+
+  return (
+    <IntlProvider messages={locals[lang]? locals[lang]: localeEn}>
+      <div>
+      <p>Detected: {navigator.language}</p>
+        <App />
+      </div>
+    </IntlProvider>
+  );
+}
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(<Root />);

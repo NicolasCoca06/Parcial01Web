@@ -1,0 +1,20 @@
+{
+    "banner" : "Adopta un Robot con Robot Lovers!",
+    "login" : "Inicio de sesión",
+    "user" : "Nombre de usuario",
+    "pass":  "Contraseña",
+    "loginButton" : "Iniciar sesión",
+    "cancel" : "Cancelar",
+    "contact": "Contactanos",
+    "ID": "ID",
+    "name": "Nombre",
+    "model": "Modelo",
+    "fabricante": "Empresa Fabricante",
+    "detail": "Detalles",
+    "verD": "Ver Detalles",
+    "año": "Año de Fabricación",
+    "process": "Capacidad de Procesamiento",
+    "humor": "Humor",
+    "select": "Seleccione un robot para ver los detalles",
+    "error": "Error de autenticación. Revise sus credenciales"
+}

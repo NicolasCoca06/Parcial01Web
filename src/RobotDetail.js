@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const RobotDetail = ({ robotId }) => {
+  const intl = useIntl();
+
   const [robot, setRobot] = useState(null);
   const [error, setError] = useState("");
 
@@ -26,13 +29,13 @@ const RobotDetail = ({ robotId }) => {
 
   return (
     <div className="card">
-      <img src={robot.imagen} className="card-img-top" alt={robot.nombre} /> {}
+      <img src={robot.imagen + "?raw=trues"} className="card-img-top" alt={robot.nombre} /> {}
       <div className="card-body">
         <h4 className="card-title text-center">{robot.nombre}</h4>
         <ul className="list-unstyled">
-          <li><strong>Año de Fabricación:</strong> {robot.añoFabricacion}</li>
-          <li><strong>Capacidad de Procesamiento:</strong> {robot.capacidadProcesamiento}</li>
-          <li><strong>Humor:</strong> {robot.humor}</li>
+          <li><strong>{intl.formatMessage({id:"año"})}:</strong> {robot.añoFabricacion}</li>
+          <li><strong>{intl.formatMessage({id:"process"})}:</strong> {robot.capacidadProcesamiento}</li>
+          <li><strong>{intl.formatMessage({id:"humor"})}:</strong> {robot.humor}</li>
         </ul>
       </div>
     </div>

@@ -3,7 +3,11 @@ import FormularioLogin from "./FormularioLogin";
 import ListarRobots from "./ListarRobots";
 import RobotDetail from "./RobotDetail";
 
+import {FormattedMessage, useIntl} from 'react-intl';
+
 function App() {
+  const intl = useIntl();
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedRobotId, setSelectedRobotId] = useState(null);
 
@@ -32,7 +36,7 @@ function App() {
               {selectedRobotId ? (
                 <RobotDetail robotId={selectedRobotId} />
               ) : (
-                <p className="text-center">Seleccione un robot para ver los detalles</p>
+                <p className="text-center">{intl.formatMessage({id:"select"})}</p>
               )}
             </div>
           </div>

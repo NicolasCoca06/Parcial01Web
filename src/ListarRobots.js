@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {FormattedMessage, useIntl} from 'react-intl';
+
+
 const ListarRobots = ({ onRobotSelect }) => { 
+  const intl = useIntl();
+
+
   const [robots, setRobots] = useState([]);
   const [error, setError] = useState("");
 
@@ -20,7 +26,7 @@ const ListarRobots = ({ onRobotSelect }) => {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-center">Adopta un Robot con Robot Lovers!</h2>
+      <h2 className="text-center">{intl.formatMessage({id:"banner"})}</h2>
       <img
         src="https://s3-alpha-sig.figma.com/img/6be0/8970/63bb2d1e43b5d380b6078a7b3a2d56a7?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Fw2jUle4ph-OvQCKCgeXE13cL8eqF0~x46PB5Ex9ZeGitifxGVpHkmgVWrSyoX40yf8kDFyDG0kCOsznQzvCm0ZRb6XBZa5wBkuSP72z2zVgbM0VRQF2LisfTuqH6zBQ6XxW2mHLr-SJ9YKwtG5qeZgWHU-63kWUHQ2WAdjoQYOQmQQbnCwb9ovR4qWeOQ4YSFoDkr7P-oiW~T9vjfymu8J6k0Wjfs8eWsu77z63tgntK~UEcReqX5fDEJ2LokvINxIvxXv~xUNNQUH0785O-R0R2AbNVDsjfwFCG1b-C-oNuHCsY88sNBPUEr6TLV39DYSEGU4TZrzYQK-FCQ82oQ__"
         alt="Robots"
@@ -33,11 +39,11 @@ const ListarRobots = ({ onRobotSelect }) => {
         <table className="table table-striped table-bordered mt-4">
           <thead className="thead-dark">
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Modelo</th>
-              <th>Empresa Fabricante</th>
-              <th>Detalles</th> {}
+              <th>{intl.formatMessage({id:"ID"})}</th>
+              <th>{intl.formatMessage({id:"name"})}</th>
+              <th>{intl.formatMessage({id:"model"})}</th>
+              <th>{intl.formatMessage({id:"fabricante"})}</th>
+              <th>{intl.formatMessage({id:"detail"})}</th> {}
             </tr>
           </thead>
           <tbody>
@@ -49,7 +55,7 @@ const ListarRobots = ({ onRobotSelect }) => {
                 <td>{robot.empresaFabricante}</td>
                 <td>
                   <button className="btn btn-primary" onClick={() => onRobotSelect(robot.id)}>
-                    Ver detalles
+                  {intl.formatMessage({id:"verD"})}
                   </button>
                 </td>
               </tr>
@@ -58,7 +64,7 @@ const ListarRobots = ({ onRobotSelect }) => {
         </table>
       )}
       <div className="text-center mt-4">
-        <p>Contact us: +57 3102105253 - info@robot-lovers.com - @robot-lovers</p>
+        <p>{intl.formatMessage({id:"contact"})}: +57 3102105253 - info@robot-lovers.com - @robot-lovers</p>
       </div>
     </div>
   );
